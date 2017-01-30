@@ -65,7 +65,7 @@ We usea large set of clustered vertebrate and amphioxus PWMs and the [gimmemotif
         >>> bedtools getfasta -fi danRer10.fa -bed real_background.bed > real_background.fa  
         >>> gimme background -i real_background.fa -l 500 -n 50000 -f FASTA gc_background.fa gc  
         ```
-
+    
     2) Gimme threshold  
         Let 'factors.pwm' be the txt file that contains our pwms of interest  
         
