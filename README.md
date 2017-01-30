@@ -44,6 +44,27 @@ We use the [IDR framework](https://github.com/nboley/idr) to take advantage of o
 >> awk 'BEGIN{OFS="\t"} $12>='"1"' {print $1,$2,$3,$4,$5,$6,$7,$8,$9,$10}' idr_out.txt uniq  | \
 sort -k7n,7n  > idr01Peaks.bed
 ```
+## Fenced code blocks inside ordered and unordered lists
+
+1. This is a numbered list.
+2. I'm going to include a fenced code block as part of this bullet:
+
+    ```
+    Code
+    More Code
+    ```
+
+3. We can put fenced code blocks inside nested bullets, too.
+   1. Like this:
+
+        ```c
+        printf("Hello, World!");
+        ```
+
+   2. The key is to indent your fenced block by **(4 * bullet_indent_level)** spaces.
+   3. Also need to put a separating newline above and below the fenced block.
+
+---
 
 
 
@@ -67,8 +88,8 @@ We usea large set of clustered vertebrate and amphioxus PWMs and the [gimmemotif
         >>> bedtools getfasta -fi danRer10.fa -bed real_background.bed > real_background.fa  
         >>> gimme background -i real_background.fa -l 500 -n 50000 -f FASTA gc_background.fa gc  
         ```
-        
-        2) Gimme threshold  
+            
+    2) Gimme threshold  
         Let 'factors.pwm' be the txt file that contains our pwms of interest  
         
         ```  
