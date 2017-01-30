@@ -48,7 +48,36 @@ sort -k7n,7n  > idr01Peaks.bed
 
 
 # Mapping PWMs to ATACseq peaks
-http://gimmemotifs.readthedocs.io/
+We usea large set of clustered vertebrate and amphioxus PWMs and the [gimmemotifs](http://gimmemotifs.readthedocs.io/) tool to determine thresholds per PWM and then to map them on the genome.  
+    
+* #####  Determining a threshold for each motif
+    Different PWMs have different maximum and minimum possible scores and thus different propensities to
+    give a 'hit' on any given sequence. We want to be stricter with small/promiscuous PWMs and more lenient 
+    with larger ones.
+
+    'gimme threshold' calculates an optimal threshold per PWM, based on their propensity to bind on a given control
+    sequence. We will generate a fake background sequence with 'gimme background', based on the gc content of non-ATACseq
+    regions of our genome and use it to calculate the PWM thresholds.
+    
+    1) Genomic background:
+        Let 'peaks.bed' be the ATACseq peaks as determined by our previous analysis.
+        ``` 
+        >>> bedtools shuffle -i peaks.bed -g genome_of_interest.txt > real_background.bed
+        >>> bedtools getfasta -fi danRer10.fa -bed real_background.bed > real_background.fa
+        >>> gimme background -i real_background.fa -l 500 -n 50000 -f FASTA gc_background.fa gc
+        ```
+    2) Gimme threshold
+        Let 'factors.pwm' be the txt file that contains our pwms of interest
+        ``` gimme threshold factors.pwm gc_background.fa 0.01 > factors_thresholds.txt```
+        will give us thresholds with 0.01fdr stringency.
+
+* #####  Mapping the pwms on ATACseq peaks
+    We can now map the PWMs with their appropriate threshold on the real ATACseq regions:
+    ```
+    >>> bedtools getfasta -fi danRer10.fa -bed peaks.bed > peaks.fa
+    >>> gimme scan -b -c factors_thresholds.txt peaks.fa factors.pwm > factors_mapped.bed
+    ```
+
 
 
 
