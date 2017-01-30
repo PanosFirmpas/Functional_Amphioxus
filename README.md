@@ -58,7 +58,7 @@ We usea large set of clustered vertebrate and amphioxus PWMs and the [gimmemotif
     sequence. We will generate a fake background sequence with 'gimme background', based on the gc content of non-ATACseq
     regions of our genome and use it to calculate the PWM thresholds.
     
-    1) Genomic background:  
+    1. Genomic background:  
     Let 'peaks.bed' be the ATACseq peaks as determined by our previous analysis.    
         
         ```
@@ -67,7 +67,7 @@ We usea large set of clustered vertebrate and amphioxus PWMs and the [gimmemotif
         gimme background -i real_background.fa -l 500 -n 50000 -f FASTA gc_background.fa gc  
         ```  
 
-    2) Gimme threshold  
+    2. Gimme threshold  
         Let 'factors.pwm' be the txt file that contains our pwms of interest  
         
         ```  
