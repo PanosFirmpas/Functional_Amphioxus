@@ -59,18 +59,12 @@ We usea large set of clustered vertebrate and amphioxus PWMs and the [gimmemotif
     regions of our genome and use it to calculate the PWM thresholds.
     
     1) Genomic background:  
-        1. Like this:
-        
-            ```c
-            printf("Hello, World!");
-            ```
     Let 'peaks.bed' be the ATACseq peaks as determined by our previous analysis.    
+        ```sh
+        bedtools shuffle -i peaks.bed -g genome_of_interest.txt > real_background.bed  
+        bedtools getfasta -fi danRer10.fa -bed real_background.bed > real_background.fa  
+        gimme background -i real_background.fa -l 500 -n 50000 -f FASTA gc_background.fa gc  
         ```
-        >>> bedtools shuffle -i peaks.bed -g genome_of_interest.txt > real_background.bed  
-        >>> bedtools getfasta -fi danRer10.fa -bed real_background.bed > real_background.fa  
-        >>> gimme background -i real_background.fa -l 500 -n 50000 -f FASTA gc_background.fa gc  
-        ```
-    
     2) Gimme threshold  
         Let 'factors.pwm' be the txt file that contains our pwms of interest  
         
