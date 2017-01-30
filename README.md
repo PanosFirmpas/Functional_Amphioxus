@@ -61,6 +61,7 @@ We usea large set of clustered vertebrate and amphioxus PWMs and the [gimmemotif
     
     1) Genomic background:  
         Let 'peaks.bed' be the ATACseq peaks as determined by our previous analysis.    
+        
         ```  
         >>> bedtools shuffle -i peaks.bed -g genome_of_interest.txt > real_background.bed  
         >>> bedtools getfasta -fi danRer10.fa -bed real_background.bed > real_background.fa  
@@ -68,6 +69,7 @@ We usea large set of clustered vertebrate and amphioxus PWMs and the [gimmemotif
         ```
     2) Gimme threshold  
         Let 'factors.pwm' be the txt file that contains our pwms of interest  
+        
         ```  
         >>> gimme threshold factors.pwm gc_background.fa 0.01 > factors_thresholds.txt  
         ```  
