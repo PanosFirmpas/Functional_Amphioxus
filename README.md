@@ -61,7 +61,7 @@ We usea large set of clustered vertebrate and amphioxus PWMs and the [gimmemotif
     
     1) Genomic background:  
         Let 'peaks.bed' be the ATACseq peaks as determined by our previous analysis.    
-        ```sh
+        ```
         >>> bedtools shuffle -i peaks.bed -g genome_of_interest.txt > real_background.bed  
         >>> bedtools getfasta -fi danRer10.fa -bed real_background.bed > real_background.fa  
         >>> gimme background -i real_background.fa -l 500 -n 50000 -f FASTA gc_background.fa gc  
