@@ -53,6 +53,8 @@ We  manually explore the clusters, and by determining at which experiment the ge
 6. Finally we throw this matrix of correlations into a clustermap function that gives us the final heatmap
     of *"cluster similarity based on their regulatory content"*
 
+![Alt text](/img/example_c2c_heatmap.png?raw=true "Optional Title")
+
 
     
     
