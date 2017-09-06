@@ -7,6 +7,7 @@
 # DONT EXPECT THIS TO RUN WITHOUT ANY CHANGES
 # 
 # If you need help runing this, please feel free to contact me : panosfirbas [at] gmail [dot] com
+# or in the issues section of this github repository
 #
 # Parallelization:
 # we send the command to the background with & so we can call more commands in the same bash script,
