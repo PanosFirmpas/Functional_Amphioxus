@@ -27,11 +27,11 @@ Reads mapped to the + strand are moved by +5 bp and reads mapping to the - stran
 The script is parallelized and outputs a number of gzipped bed files where each bedline is one read, with
 its mapping quality in the score column.
 
-This script can be found in this repository as *00.2_filter_nf_reads.py*
+This script can be found in this repository as *filter_nf_reads.py*
 
 ```sh
 # Example usage:
->> python 00.2_filter_nf_reads.py ${rbam} ${fs_limit} ${processors} ${prefix}
+>> python filter_nf_reads.py ${rbam} ${fs_limit} ${processors} ${prefix}
 ```
 **${fs_limit}** : The upper FragmentSize limit, only reads with a fragment size <= this will be output.
 **${processors}** : How many processors you want to employ 
@@ -46,7 +46,7 @@ with a unique number. You can concatenate the resulting files with zcat
 
 
 # 3. Peak calling
-Please see 00.3_peak_calling_idr.sh for a detailed script of peak calling and idr. 
+Please see peak_calling_idr.sh in this repository for a detailed script of peak calling and idr. 
 *Briefly*, we used [macs2](https://github.com/taoliu/MACS) for low-thresholded peak-calling 
 ```sh
 >> macs2 callpeak --nomodel --keep-dup 1 --llocal 10000 --extsize 74 --shift -37  -p 0.07 -g ${gsize} \
@@ -57,7 +57,6 @@ Then, we use the [IDR framework](https://github.com/nboley/idr) to take advantag
     
 
 ```sh
-# Please see 00.3_peak_calling_idr.sh for a detailed script of peak calling and idr. 
 >> idr -i 0.1 -s repl_1_peaks.bed repl_2_peaks.bed -p pooled_repl_peaks.bed -o idr_out.txt
 >> awk 'BEGIN{OFS="\t"} $12>='"1"' {print $1,$2,$3,$4,$5,$6,$7,$8,$9,$10}' idr_out.txt uniq  | \
     sort -k7n,7n  > idr01Peaks.bed
