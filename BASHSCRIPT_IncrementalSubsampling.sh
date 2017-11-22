@@ -9,6 +9,11 @@
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=4
 
+###########################################################################################################################################################################################################################
+# This script is for illustration purposes only. It should run well with few modifications, mostly having to do with paths
+# DONT EXPECT THIS TO RUN WITHOUT ANY CHANGES
+###########################################################################################################################################################################################################################
+
 
 ## activate a virtual env
 source /path/to/virtualenv/bin/activate
